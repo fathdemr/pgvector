@@ -14,6 +14,7 @@ import (
 func TestEmbedding(t *testing.T) {
 
 	Config.InitDb()
+	e := EmbeddingService.New(Config.Db)
 	ctx := context.Background()
 	cnnstring, _ := Config.GetCnnString()
 
@@ -31,12 +32,18 @@ func TestEmbedding(t *testing.T) {
 	var answers []Models.Answer
 	err = Config.Db.Find(&answers).Error
 
+	// alternative
+	//var answerNames []string
+	//Config.Db.Model(&Models.Answer{}).Select("answer").Scan(&answerNames)
+	//Config.Db.Model(&Models.Answer{}).Pluck("answer", &answerNames)
+	// select answer from answers
+
 	var answersStringArray []string
 	for _, answer := range answers {
 		answersStringArray = append(answersStringArray, answer.Answer)
 	}
 
-	embeddings, err := EmbeddingService.FetchEmbeddings(answersStringArray, Config.OpenAIKey)
+	embeddings, err := e.FetchEmbeddings(answersStringArray, Config.OpenAIKey)
 	if err != nil {
 		panic(err)
 	}

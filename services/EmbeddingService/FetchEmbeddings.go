@@ -12,7 +12,7 @@ type apiRequest struct {
 	Model string   `json:"model"`
 }
 
-func FetchEmbeddings(input []string, apiKey string) ([][]float32, error) {
+func (e *EmbeddingService) FetchEmbeddings(input []string, apiKey string) ([][]float32, error) {
 	url := "https://api.openai.com/v1/embeddings"
 	data := &apiRequest{
 		Input: input,

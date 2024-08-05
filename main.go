@@ -13,7 +13,8 @@ import (
 
 func main() {
 	Config.InitDb()
-	Config.ReadConfig()
+
+	e := EmbeddingService.New(Config.Db)
 
 	// Veritabanı bağlantısını kur
 	ctx := context.Background()
@@ -31,7 +32,7 @@ func main() {
 
 	// Soru vektörünü al
 	query := "restoran ne?"
-	questionEmbedding, err := EmbeddingService.FetchEmbeddings([]string{query}, Config.OpenAIKey)
+	questionEmbedding, err := e.FetchEmbeddings([]string{query}, Config.OpenAIKey)
 	if err != nil {
 		panic(err)
 	}

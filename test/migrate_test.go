@@ -16,11 +16,11 @@ func TestMigrate(t *testing.T) {
 		{ID: 3, Answer: "Bu otelin şehri Istanbul'dur"},
 		{ID: 4, Answer: "Bu otelin ülkesi Türkiye'dir"},
 		{ID: 5, Answer: "Otelin yetkili kişisi Fatih'dir"},
-		{ID: 6, Answer: "Otelin yetkili telefonu 5537724868"},
+		{ID: 6, Answer: "Otelin yetkili telefonu 05555555555"},
 		{ID: 7, Answer: "Otelin e postası otel@example.com"},
-		{ID: 8, Answer: "Otelin viber numarası 05557779933"},
+		{ID: 8, Answer: "Otelin viber numarası 05555555555"},
 		{ID: 9, Answer: "Sosyal medya hesaplarımız otel_dalaman"},
-		{ID: 10, Answer: "Resepsiyon numaramız 02128509310"},
+		{ID: 10, Answer: "Resepsiyon numaramız 02121111111"},
 	}
 
 	Config.Db.AutoMigrate(&Models.Answer{})
